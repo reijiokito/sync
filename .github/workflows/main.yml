@@ -13,5 +13,5 @@ jobs:
     - uses: reijiokito/sync@main
       with:
         target-url: git@gitlab.com:reijiokito/test-sync.git
-        target-username: romeothecong
+        target-username: romeothe
         target-token: glpat-CXxLsauREkZcvmfzmVzY
