@@ -13,5 +13,5 @@ jobs:
     - uses: reijiokito/sync@main
       with:
         target-url: git@repo.gviet.vn:sigma-livestream/sigma-machine/sync.git
-        target-username: congnt@gviet.vn
+        target-username: congnt
         target-token: rYH_i9oN6fj7v2FxyoSX
