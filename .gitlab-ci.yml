@@ -1,0 +1,11 @@
+sync-with-github:
+  before_script:
+    - git config --global user.name romeothecong
+    - git config --global user.email romeothecong@gmail.com
+  script:
+    - git remote add github https://github.com/reijiokito/sync.git
+    - git checkout main
+    - git pull origin main
+    - git pull github main
+    - git status
+    - git push https://romeothecong:glpat-CXxLsauREkZcvmfzmVzY@gitlab.com:reijiokito/test-sync.git HEAD:main

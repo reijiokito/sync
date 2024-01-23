@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import type { QueryBuilderWhere } from '@nuxt/content/dist/runtime/types';
 
 useHead({
   titleTemplate: '%s · Sigma Streaming',
@@ -9,7 +8,10 @@ useHead({
 })
 const { params } = useRoute()
 
-const slug = computed(() => params.slug.join('/'))
+const slug = computed(() => {
+  const _slug = params.catalog ? ('/' + params.catalog) : ''
+  return 'resources' + _slug
+})
 
 const { data: dataResourcesDir } = await useAsyncData('resources-list-dir', () => queryContent('resources').where({
   $or: [
@@ -30,8 +32,8 @@ const currentDir = computed(() => dataResourcesDir.value?.find(item => item._pat
 
 const tag = eagerComputed(() => useRoute().query.tag)
 
-const query = computed<QueryBuilderWhere>(() => {
-  if (params.slug.length === 1) {
+const query = computed(() => {
+  if (!params.catalog) {
     if (tag.value)
       return {
         tags: { '$contains': [tag.value] }
@@ -45,7 +47,7 @@ const query = computed<QueryBuilderWhere>(() => {
       }
   }
   return {
-    _dir: { $eq: params.slug[params.slug.length - 1] }
+    _dir: { $eq: params.catalog }
   }
 })
 
@@ -60,6 +62,7 @@ const tags = computed(() => appConfig.tags)
 </script>
 
 <template>
+
   <AppNavbar />
   <div class="flex container">
     <div class="mt-120px w-1/4 flex-shrink-0 py-5 pr-10 sticky top-[calc(var(--header-height))]">
@@ -68,7 +71,8 @@ const tags = computed(() => appConfig.tags)
       </h3>
       <div class="grid mx--2 mt-4 gap-2">
 
-        <NuxtLink v-for="item in dataResourcesDir" :key="item.to" exact-active-class="text-primary font-bold" :to="item._path"
+        <NuxtLink v-for="item in dataResourcesDir" :key="item.to" exact-active-class="text-primary font-bold"
+          :to="item._path"
           class="flex cursor-pointer items-center justify-between gap-2 rounded-xl px-3 py-2 hover:bg-primary/10 hover:text-primary">
           <div class="flex items-center gap-2">
             <Icon :name="item.icon" class="size-5" />

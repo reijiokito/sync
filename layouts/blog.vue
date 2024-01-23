@@ -1,6 +1,15 @@
 <script lang="ts" setup>
+useHead({
+  titleTemplate: '%s · Sigma Streaming',
+  meta: [
+    { name: 'twitter:card', content: 'summary_large_image' },
+  ],
+})
 const { params } = useRoute()
-const slug = computed(() => params.slug.join('/'))
+const slug = computed(() => {
+  const _slug = params.catalog + '/' + params.slug
+  return 'resources/' + _slug
+})
 const { data: item } = await useAsyncData('resource-content-blog' + slug.value, () => queryContent('resources').where({
   _path: {
     $eq: '/' + slug.value

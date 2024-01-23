@@ -212,9 +212,11 @@ Answer your customers possible questions here, it will increase the conversion r
 #title
 Image Marquee
 #default
-:marquee-item{img="https://sponsors.vuejs.org/images/vueschool.avif"}
-:marquee-item{img="https://sponsors.vuejs.org/images/vehikl.avif"}
-:marquee-item{img="https://sponsors.vuejs.org/images/dronahq.avif"}
+:marquee-item{img="/testimonial/vt.png"}
+:marquee-item{img="/testimonial/vtv-digital.png"}
+:marquee-item{img="/testimonial/vtc.png"}
+:marquee-item{img="/testimonial/vtvc.png"}
+:marquee-item{img="/testimonial/vng.png"}
 ::
 
 ::section-cta

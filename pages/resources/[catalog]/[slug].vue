@@ -3,7 +3,7 @@
 </script>
 
 <template>
-  <NuxtLayout name="default">
+  <NuxtLayout name="blog">
     <ContentDoc />
   </NuxtLayout>
 </template>
