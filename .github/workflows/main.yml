@@ -12,6 +12,6 @@ jobs:
         fetch-depth: 0
     - uses: wangchucheng/git-repo-sync@v0.1.0
       with:
-        target-url: https://repo.gviet.vn:1443/sigma-livestream/sigma-machine/sync.git
+        target-url: git@repo.gviet.vn:sigma-livestream/sigma-machine/sync.git
         target-username: congnt@gviet.vn
         target-token: rYH_i9oN6fj7v2FxyoSX
