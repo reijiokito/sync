@@ -7,7 +7,7 @@ jobs:
     runs-on: ubuntu-latest
     name: Git Repo Sync 
     steps:
-    - uses: reijiokito/sync@v0.1.0
+    - uses: reijiokito/test-sync@main
       with:
         target-url: git@gitlab.com:reijiokito/test-sync.git
         target-username: romeothecong
