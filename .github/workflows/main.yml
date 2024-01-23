@@ -12,6 +12,6 @@ jobs:
         fetch-depth: 0
     - uses: reijiokito/sync@main
       with:
-        target-url: git@repo.gviet.vn:sigma-livestream/sigma-machine/sync.git
-        target-username: congnt
-        target-token: rYH_i9oN6fj7v2FxyoSX
+        target-url: git@gitlab.com:reijiokito/test-sync.git
+        target-username: romeothecong
+        target-token: glpat-CXxLsauREkZcvmfzmVzY
