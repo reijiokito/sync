@@ -1,0 +1,99 @@
+# Reference: https://www.exclamationlabs.com/blog/continuous-deployment-to-npm-using-gitlab-ci/
+
+# GitLab uses docker in the background, so we need to specify the
+# image versions. This is useful because we're freely to use
+# multiple node versions to work with it. They come from the docker
+# repo.
+# Uses NodeJS V 9.4.0
+image: docker:stable
+
+# cache:
+#   untracked: true
+#   key: "$CI_PROJECT_ID"
+#   paths:
+#     - node_modules
+
+
+variables:
+  REGISTRY_GROUP: sigma-livestream
+  HARBOR_IMAGE_TAG: $REGISTRY/$REGISTRY_GROUP/$CI_PROJECT_NAME
+  STUDIO_IMAGE_TAG: $REGISTRY/$REGISTRY_GROUP/sanity-studio
+  DOCKER_IMAGE_TAG: $DOCKER_USERNAME/$CI_PROJECT_NAME
+  DEPLOY_IMAGE: $REGISTRY/$REGISTRY_GROUP/$CI_PROJECT_NAME
+  DEPLOY_PATH: sigma-transcode-live/sigma-transcode-live
+
+# :$CI_COMMIT_REF_SLUG
+# We tell GitLab to install all the packages
+# before running anything.
+# Docker images come with yarn preinstalled
+
+# You specify the stages. Those are the steps that GitLab will go through
+# Order matters.
+stages:
+  - build
+  - build-image
+  - build-cms
+  - docker-release
+  - deploy
+  # - openMr
+  # - production
+
+image-build-dev:
+  stage: build
+  tags:
+    - dind
+  script:
+    - docker build -t $HARBOR_IMAGE_TAG:$CI_COMMIT_SHORT_SHA .
+  only:
+    refs:
+      - main
+
+release-image-dev-to-harbor:
+  stage: docker-release
+  tags:
+    - dind
+  before_script:
+    - docker login -u $HARBOR_USERNAME -p $HARBOR_PASSWORD $REGISTRY
+  script:
+    - docker push $HARBOR_IMAGE_TAG:$CI_COMMIT_SHORT_SHA
+  only:
+    refs:
+      - main
+
+########## Docker build production #######
+
+docker-build-landing-page-production:
+  stage: build-image
+  tags:
+    - dind
+  script:
+    - docker build -t $HARBOR_IMAGE_TAG:$CI_COMMIT_TAG --build-arg PACKAGE=$PACKAGE .
+  variables:
+    PACKAGE: landing-page
+  rules:
+    - if: '$CI_COMMIT_TAG =~ /^([0-9]|[1-9][0-9]*)\.([0-9]|[1-9][0-9]*)\.([0-9]|[1-9][0-9]*)(?:-([0-9A-Za-z-]+(?:\.[0-9A-Za-z-]+)*))?(?:\+[0-9A-Za-z-]+)?$/'
+
+
+########## Docker push production #######
+
+docker-push-landing-page-production:
+  stage: docker-release
+  tags:
+    - dind
+  script:
+    - docker push $HARBOR_IMAGE_TAG:$CI_COMMIT_TAG
+  rules:
+    - if: '$CI_COMMIT_TAG =~ /^([0-9]|[1-9][0-9]*)\.([0-9]|[1-9][0-9]*)\.([0-9]|[1-9][0-9]*)(?:-([0-9A-Za-z-]+(?:\.[0-9A-Za-z-]+)*))?(?:\+[0-9A-Za-z-]+)?$/'
+
+########### Docker deploy dev #############
+
+deploy-to-dev:
+  stage: deploy
+  only:
+    - develop
+  variables:
+    DEPLOY_ENVIRONMENT: develop
+    DEPLOY_IMAGE_TAG: $CI_COMMIT_SHORT_SHA
+  trigger:
+    project: sigma-livestream/k8s-infra-dev
+    branch: master

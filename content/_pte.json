@@ -1,0 +1,42 @@
+[
+  {
+    "src": "https://pte-cdn.sigma.video/bbb30/pte/master.m3u8",
+    "thumb": "https://pte-cdn.sigma.video/bbb30/thumb.jpg",
+    "reso": "HD",
+    "metric": "https://pte-cdn.sigma.video/bbb30/metrics.txt",
+    "reso2": "1920x1080 10:34 MP4 H.264 30FPS",
+    "reso3": "1080p"
+  },
+  {
+    "src": "https://pte-cdn.sigma.video/tos/pte/master.m3u8",
+    "thumb": "https://pte-cdn.sigma.video/tos/thumb.jpg",
+    "reso": "HD",
+    "metric": "https://pte-cdn.sigma.video/tos/metrics.txt",
+    "reso2": "1920x1080 12:14 MP4 H.264 30FPS",
+    "reso3": "1080p"
+  },
+  {
+    "src": "https://pte-cdn.sigma.video/football/pte/master.m3u8",
+    "thumb": "https://pte-cdn.sigma.video/football/thumb.jpg",
+    "reso": "HD",
+    "metric": "https://pte-cdn.sigma.video/football/metrics.txt",
+    "reso2": "1920x1080 9:50 MP4 H.264 30FPS",
+    "reso3": "1080p"
+  },
+  {
+    "src": "https://pte-cdn.sigma.video/tennis/pte/master.m3u8",
+    "thumb": "https://pte-cdn.sigma.video/tennis/thumb.jpg",
+    "reso": "HD",
+    "metric": "https://pte-cdn.sigma.video/tennis/metrics.txt",
+    "reso2": "1920x1080 6:25 MP4 H.264 30FPS",
+    "reso3": "1080p"
+  },
+  {
+    "src": "https://pte-cdn.sigma.video/movie/pte/master.m3u8",
+    "thumb": "https://pte-cdn.sigma.video/movie/thumb.jpg",
+    "reso": "HD",
+    "metric": "https://pte-cdn.sigma.video/movie/metrics.txt",
+    "reso2": "1920x1080 9:59 MP4 H.264 30FPS",
+    "reso3": "1080p"
+  }
+]

@@ -1,0 +1,27 @@
+{
+  "debug-template": {
+		"scope": "html",
+		"prefix": "debug",
+		"body": [
+			"<DevOnly>",
+			"\t<details open>",
+			"\t\t<summary>${1:value}</summary>",
+			"\t\t<pre>{{ JSON.stringify(${1:value}, null, 2) }}</pre>",
+			"\t</details>",
+			"</DevOnly>"
+		]
+	},
+	"debug-pretty": {
+		"scope": "html",
+		"prefix": "debug-pretty",
+		"body": [
+			"<DevOnly>",
+			"\t<div class=\"z-100\">",
+			"\t\t<details open>",
+			"\t\t\t<VueJsonPretty :data=\"${1:value}\"/>",
+			"\t\t</details>",
+			"\t</div>",
+			"</DevOnly>",
+		]
+	},
+}
