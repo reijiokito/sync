@@ -7,11 +7,8 @@ jobs:
     runs-on: ubuntu-latest
     name: Git Repo Sync 
     steps:
-    - uses: actions/checkout@v2
-      with:
-        fetch-depth: 0
-    - uses: reijiokito/sync@main
+    - uses: reijiokito/sync@v0.1.0
       with:
         target-url: git@gitlab.com:reijiokito/test-sync.git
-        target-username: romeothe
+        target-username: romeothecong
         target-token: glpat-CXxLsauREkZcvmfzmVzY
