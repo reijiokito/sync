@@ -1,11 +1,7 @@
 name: GitlabSync
 run-name: ${{ github.actor }} is testing out sync 🚀
 on:
-  - push:
-      branches:
-        - 'main'
-    pull_request:
-    workflow_dispatch:
+  - push
 jobs:
   sync:
     runs-on: ubuntu-latest
