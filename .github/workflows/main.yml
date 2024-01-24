@@ -12,6 +12,6 @@ jobs:
         fetch-depth: 0
     - uses: reijiokito/sync@main
       with:
-        target-url: reijiokito/sync.git
+        target-url: gitlab.com/reijiokito/sync.git
         target-username: reijiokito
         target-token: glpat-9XEKmQx8BeDHvNexj7DY
