@@ -19,7 +19,9 @@ runs:
   using: "composite"
   steps:
     - run: echo "${{ github.action_path }}."
+      shell: bash
     - run: echo "${{ github.event.ref }}."
+      shell: bash
     - run: ${{ github.action_path }}/entrypoint.sh
       shell: bash
       env:
