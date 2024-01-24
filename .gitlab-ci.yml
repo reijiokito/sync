@@ -8,4 +8,4 @@ sync-with-github:
     - git pull origin main
     - git pull github main
     - git status
-    - git push https://romeothecong:glpat-CXxLsauREkZcvmfzmVzY@gitlab.com:reijiokito/test-sync.git HEAD:main
+    - git push https://root:glpat-CXxLsauREkZcvmfzmVzY@gitlab.com/reijiokito/test-sync.git HEAD:main     
