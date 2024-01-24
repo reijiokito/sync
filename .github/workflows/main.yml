@@ -10,7 +10,7 @@ jobs:
     - uses: actions/checkout@v2
       with:
         fetch-depth: 0
-    - uses: reijiokito/sync@v0.1.0
+    - uses: reijiokito/sync@main
       with:
         target-url: git@gitlab.com:reijiokito/test-sync.git
         target-username: romeothecong
