@@ -1,17 +1,29 @@
-name: GitlabSync
-run-name: ${{ github.actor }} is testing out sync 🚀
-on:
-  - push
-jobs:
-  sync:
-    runs-on: ubuntu-latest
-    name: Git Repo Sync 
-    steps:
-    - uses: actions/checkout@v2
-      with:
-        fetch-depth: 0
-    - uses: reijiokito/sync@main
-      with:
-        target-url: git@gitlab.com:reijiokito/test-sync.git
-        target-username: romeothecong
-        target-token: glpat-CXxLsauREkZcvmfzmVzY
+name: 'Git Repo Sync'
+description: 'Git Repo Sync enables you to synchronize code to other code management platforms, such as GitLab, Gitee, etc.'
+
+branding:
+  icon: upload-cloud
+  color: gray-dark
+
+inputs:
+  target-url:
+    description: 'Target Repo URL'
+    required: true
+  target-username:
+    description: 'Target Repo Username'
+    required: true
+  target-token:
+    description: 'Target Token'
+    required: true
+runs:
+  using: "composite"
+  steps:
+    - run: echo "${{ github.action_path }}."
+    - run: echo "${{ github.event.ref }}."
+    - run: ${{ github.action_path }}/entrypoint.sh
+      shell: bash
+      env:
+        INPUT_TARGET_URL: ${{ inputs.target-url }}
+        INPUT_TARGET_USERNAME: ${{ inputs.target-username }}
+        INPUT_TARGET_TOKEN: ${{ inputs.target-token }}
+        GITHUB_EVENT_REF: ${{ github.event.ref }}
