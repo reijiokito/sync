@@ -12,6 +12,6 @@ jobs:
         fetch-depth: 0
     - uses: reijiokito/sync@main
       with:
-        target-url: git@gitlab.com:reijiokito/test-sync.git
-        target-username: romeothecong
-        target-token: glpat-CXxLsauREkZcvmfzmVzY
+        target-url: git@gitlab.com:reijiokito/sync.git
+        target-username: reijiokito
+        target-token: glpat-9XEKmQx8BeDHvNexj7DY
