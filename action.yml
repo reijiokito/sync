@@ -1,1 +1,17 @@
-name: action
+name: GitlabSync
+run-name: ${{ github.actor }} is testing out sync 🚀
+on:
+  - push
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    name: Git Repo Sync 
+    steps:
+    - uses: actions/checkout@v2
+      with:
+        fetch-depth: 0
+    - uses: reijiokito/sync@main
+      with:
+        target-url: git@gitlab.com:reijiokito/test-sync.git
+        target-username: romeothecong
+        target-token: glpat-CXxLsauREkZcvmfzmVzY
