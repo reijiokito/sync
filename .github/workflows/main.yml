@@ -15,4 +15,3 @@ jobs:
         target-url: gitlab.com/reijiokito/sync.git
         target-username: reijiokito
         target-token: glpat-9XEKmQx8BeDHvNexj7DY
-        
