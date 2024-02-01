@@ -14,5 +14,5 @@ jobs:
       with:
         target-url: gitlab.com/reijiokito/ahihi.git
         target-username: reijiokito
-        target-token: glpat-MGgSnKXyumR4yqy-u6fX
+        target-token: glpat-9XEKmQx8BeDHvNexj7DY
         
